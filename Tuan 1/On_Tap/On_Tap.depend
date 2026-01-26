@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1769337397 source:d:\code\udtt\tuan 1\on_tap\main.cpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<climits>
+
