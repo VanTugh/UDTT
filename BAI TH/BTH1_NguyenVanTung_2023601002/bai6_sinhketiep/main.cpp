@@ -1,38 +1,52 @@
 #include <iostream>
 using namespace std;
 
-string name[6] = {"Trang", "Cong", "Trung", "Binh", "Hoan", "Mai"};
+int n = 6;
+int a[10];
 bool ok = true;
 
+string name[] = {
+    "", "Trang", "Cong", "Trung", "Binh", "Hoan", "Mai"
+};
+char ghe[] = {' ', 'a', 'b', 'c', 'd', 'e', 'f'};
+
+void khoitao() {
+    for (int i = 1; i <= n; i++)
+        a[i] = i;
+}
+
 void sinh() {
-    int i = 4;
-    while (i >= 0 && name[i] > name[i + 1])
+    int i = n - 1;
+    while (i >= 1 && a[i] > a[i + 1])
         i--;
 
-    if (i < 0) {
+    if (i == 0)
         ok = false;
-        return;
-    }
+    else {
+        int j = n;
+        while (a[j] < a[i])
+            j--;
 
-    int j = 5;
-    while (name[j] < name[i])
-        j--;
+        swap(a[i], a[j]);
 
-    swap(name[i], name[j]);
-
-    int l = i + 1, r = 5;
-    while (l < r) {
-        swap(name[l], name[r]);
-        l++;
-        r--;
+        int l = i + 1, r = n;
+        while (l < r) {
+            swap(a[l], a[r]);
+            l++; r--;
+        }
     }
 }
 
+void xuat() {
+    for (int i = 1; i <= n; i++)
+        cout << ghe[i] << ": " << name[a[i]] << "  ";
+    cout << endl;
+}
+
 int main() {
+    khoitao();
     while (ok) {
-        for (int i = 0; i < 6; i++)
-            cout << name[i] << " ";
-        cout << endl;
+        xuat();
         sinh();
     }
     return 0;
