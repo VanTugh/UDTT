@@ -1,42 +1,60 @@
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
 
 using namespace std;
-int n, k;
-int a[100];
-bool used[100];
-void khoitao()
+
+int n;
+int H[20][20];
+int a[8] = {2, 1, -1, -2, -2, -1, 1, 2};
+int b[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+void XuatKetQua()
 {
-    for( int  i = 1 ; i<=n ; i++)
+    cout << "Tim thay duong di:" << endl;
+    for(int i = 1; i <=n ;i++)
     {
-        a[i] = i;
-    }
-}
-void tapcon(int i)
-{
-    for(int j = 1; j<= n ; j++)
-    {
-        if(!used[j])
+        for(int j =1; j<=n ;j++)
         {
-            a[i] = j;
-            used[j] = true;
-            if(i == n)
+            cout<<H[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    exit(0);
+}
+void Try(int k ,int x, int y)
+{
+    for(int i =0 ; i<8 ;i++)
+    {
+        int u = x + a[i];
+        int v = y + b[i];
+        if (u >= 1 && u <= n &&
+            v >= 1 && v <= n && H[u][v] == 0)
+        {
+            H[u][v] = k;
+            if(k == n*n)
             {
-                for(int v =1 ; v<= n; v++ )
-                    cout<<a[v];
-                cout<<endl;
+                XuatKetQua();
             }
             else
             {
-                tapcon(i+1);
+                Try(k+1,u,v);
             }
-            used[j] = false;
+            H[u][v] = 0;
         }
     }
 }
-
 int main() {
-    cin >> n ;
-    a[0] = 0;
-    tapcon(1);
+    int x, y;
+    cin >> n;
+    cin >> x >> y;
+
+    for(int i = 1; i <= n; i++)
+        for(int j = 1; j <= n; j++)
+            H[i][j] = 0;
+
+    H[x][y] = 1;
+    Try(2, x, y);
+
+    cout << "Khong tim thay loi giai";
     return 0;
 }
