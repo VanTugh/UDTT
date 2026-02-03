@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Fan {
+    string hang, mau;
+    int gia;
+};
+
+int main() {
+    int p = 500000;
+    vector<Fan> d = {
+        {"Panasonic","Trang",300000},
+        {"Senko","Do",200000},
+        {"Asia","Xanh",150000},
+        {"Midea","Trang",100000},
+        {"Sharp","Den",250000},
+        {"Toshiba","Xam",180000}
+    };
+
+    // Bán quạt đắt trước
+    sort(d.begin(), d.end(), [](Fan a, Fan b) {
+        return a.gia > b.gia;
+    });
+
+    int sum = 0;
+    vector<Fan> ban;
+
+    for (auto f : d) {
+        if (sum + f.gia <= p) {
+            sum += f.gia;
+            ban.push_back(f);
+        }
+    }
+
+    if (sum == p) {
+        cout << "Ban it quat nhat de duoc dung p:\n";
+        for (auto f : ban)
+            cout << f.hang << " - " << f.gia << endl;
+        cout << "So quat: " << ban.size() << endl;
+    } else {
+        cout << "Khong tim duoc cach ban dung bang p bang tham lam\n";
+    }
+}

@@ -1,0 +1,122 @@
+Bước 1 :
+1 . Chiến lược tham lam:
+a, khái niệm:
+1 phương pháp giải quyết vấn đề, thiết kế thuật toán mà tại mỗi bước ta chọn hành động tốt nhất hiện có và giả sử rằng lựa chọn này sẽ không làm mất đi khả năng đạt được nghiệm tối ưu
+toàn cục
+vịt : ta chọn hành động tốt nhất hiện có và giả sử rằng lựa chọn này sẽ không làm mất đi khả năng đạt được nghiệm tối ưu toàn cục. vậy nghiệm tối ưu toàn cục vfa cục bộ là gì, cho ví dụ , việc lựa chọn ảnh hưởng đến khả năng  đạt  được nghiệm tối ưu toàn cục như thế nào?cho ví dụ
+
+trả lời : cục bộ :là nghiệm tốt nhất trong bước đó, chưa chắc là cái đúng cho cả bài
+toàn cục : cái cần tìm
+ví dụ: trên đường đi học về mẹ rặn bạn mua rau :  vừa di được 5m trước mặt bạn là 2 quầy rau , với tiêu chí ngon,rẻ,bạn chọn luôn quầy đầu tiên, tuy nhiên nếu bạn chịu đi thêm 5m nữa sẽ có 1 quầy rau còn ngon và rẻ hơn . việc bạn chọn luôn quán đầu khiến cho bạn bỏ lỡ mất của ngon ở phía sau 
+vịt : hành động tốt nhất là gì? là hành động mang lại lợi ích lớn nhất theo tiêu chí đã chọn ở thời điểm hiện tại.
+ví dụ: cũng như ví dụ trên , đó là bạn tiến hành lựa chọn giữa 2 quán a và b đầu tiên mà bạn cho là hợp lý nhất trong vòng 5m  bán kính quanh bạn
+hoặc:
+Chọn hoạt động → kết thúc sớm nhất
+Lập lịch → lợi nhuận / thời gian
+Balo phân số → giá trị / trọng lượng
+các bước xác định hành động tốt nhất thường bao gồm :
+Xác định tiêu chí lựa chọn : đặt ra các tiêu chí -> đánh giá hành động nào là tốt nhất
+Đánh giá các lựa chọn
+Chọn hành động tối ưu cục bộ
+vịt : tại sao lại chọn cục bộ mà không chọn luôn toàn cục
+trả lời: đôi khi không phải lúc nào cũng tìm được nghiệm toàn cục dễ dàng, hơn nũa việc xem xét hết tất cả các khả năng cũng là 1 phần tốn thời gian
+b, nguyên lý hoạt động
+ở phần này ta sẽ chỉ sử dụng duy nhất 1 ví dụ để giải thích :
+đó là bài toán đi chợ , mẹ cho 50 nghìn và yêu cầu bạn đi mua rau sao cho:đủ 3 loại rau củ cần mua ( rau cải, bắp cải, cà chua) ,rẻ ( tối ưu tiền ) , và không được đi quá xa. Để tránh quá phức tạp, ta coi mỗi bước đi là 5m và giới hạn là 20 m bán kính quanh nhà
+Khởi tạo : bắt đầu với 1 trạng thái phù hợp
+đó là 50 nghìn, số bước chân = 0, lúc này bạn đang ở nhà
+lựa chọn tham lam :Ở mỗi bước, chọn hành động tốt nhất theo tiêu chí
+đã xác định
+ta hành động luôn :
+5m đầu :
+có 2 cửa hàng a và b cho bạn lựa chọn
+A bán : rau cải+  bắp cải  = 35k
+B bán : rau cải + bắp cải = 45k
+cả 2 đều thỏa mãn, với tiêu chí rẻ bạn chọn A
+tiêu chí : đủ 3 loại rau củ ,rẻ ( tối ưu tiền ) , và không được đi quá xa
+cập nhật trạng thái: Cập nhật trạng thái của bài toán dựa trên lựa chọn
+vừa thực hiện
+cập nhật: sau khi mua ở A, bạn còn 15k và cần mua thêm cà chua , số m đã đi :5 < 20 (TM)
+kiểm tra kết quả :
+Kiểm tra xem bài toán đã được giải quyết hoàn
+toàn chưa. Nếu có, kết thúc quá trình. Nếu chưa, quay lại bước 2.
+bài toán chưa xong -> bước 2
+5m nữa -> không có cửa hàng : tiền : 15k, cần cà chua, số m đã đi : 10 < 20 (TM)
+5m nữa :
+đã có cửa hàng c ,d ,e:
+c : cà chua : 9k
+d : cà chua : 12k
+e : cà chua : 15k
+so với tiêu chí rẻ _> chọn c : 
+=> tiền còn : 6K
+số bước : 15 < 20 (TM)
+rau củ : đủ 
+-> dk dừng đáp ứng đủ
+thu kết quả :
+Khi điều kiện dừng được thỏa mãn, giải pháp cuối cùng
+được tạo ra từ các lựa chọn cục bộ đã thực hiện trong suốt quá trình.
+kết quả như trên và bạn đi về nhà
+
+c, đặc điểm 
+lựa chọn cục bộ tối ưu 
+d, các điều kiện để chiến lược hiệu quả
+Cấu trúc con tối ưu : Lời giải tối ưu được xây dựng từ các bài toán con
+vịt : tại sao lại được xây dựng từ các bài toán con? khác gì chia để trị hay quay lui
+trả lời : Sau mỗi lựa chọn, bài toán còn lại nhỏ hơn . 
+khác là : Tham lam không thử, không sửa, không quay lui
+Phần còn lại có cấu trúc giống bài toán ban đầu
+Thuộc tính lựa chọn tham lam: tại mỗi bước, phải lựa chọn ra tối ưu cục bộ , sau đó dẫn đến lời giải của toàn cục
+vịt : liệu áp dụng tham lam thì lẽ luôn luôn đúng không, nếu không thì có giải thuật nào tối ưu hoặc khắc phục nhược điểm cho tham lam không?
+trả lời : tham lam không hề đúng cho mọi bài toán, ví dụ như bài toán đổi tiền để mang đi ít đồng xu nhất ( trường hợp value = 6 )
+Quy hoạch động (Dynamic Programming)
+không có sự phụ thuộc ngược :
+các quyết định đưa ra phía sau không ảnh hưởng đến ban đầu 
+vịt : tại sao? 
+trả lời : nếu ảnh hưởng thì đó lại là backtracking rồi
+
+2 . Chiến lược quy hoạch động
+a, khái niệm : giải quyết vấn đề bằng cách chia nhỏ vấn đề to -> các bài toán nhỏ, 
+các bài toán này được giải quyết độc lập -> kết quả sẽ được dử dụng trong tương lai
+như việc sản xuất 1 chiếc oto vậy:
+từng phần như linh kiện , lớp vỏ , ghế ngồi... đều được chế tạo riêng -> hợp lại tạo thành kết quả
+vịt : nghe như kiểu đệ quy với chia để trị nhỉ, về phần chia nhỏ bài toán thì lại giống như bài toán tham lam rồi phải không?
+trả lời : bạn nhận xét chuẩn đấy , quy hoạch động sử dụng cái gọi là đệ quy có nhớ , nó được dùng để lưu kết quả của bài toán con đã tính trước đó, tẩt nhiên là để khi ta gọi lại bài toán con đó, ta sẽ có kết quả luôn, khỏi phải tính lại. Bởi vì cơ chế duyệt tất cả trường hợp của quy hoạch động khiến bản thân nó tính toán rất lâu + tốn bộ nhớ , cơ chế này giúp tăng tốc độ làm việc
+vịt : đưa ra ví dụ thực tiễn cho phần a đi bro
+trả lời : Học thuộc bài để thi
+
+Bạn cần học 100 câu hỏi
+
+Mỗi ngày học 10 câu
+
+Nếu hôm nay bạn quên hết những gì đã học hôm qua → rất mệt 
+
+Nhưng nếu bạn ghi chép lại / nhớ → hôm sau chỉ học phần mới
+ Quy hoạch động = học có ghi nhớ,
+Đệ quy thường = học mà quên sạch hôm qua
+
+b, nguyên lý hoạt động
+Phân tích cấu trúc tối ưu của vấn đề : Xác định bài toán con, Xác định công thức truy hồi , Xác định điều kiện cơ sở
+Lưu trữ kết quả của các bài toán con :Lưu kết quả vào bảng phương án
+Kết hợp các lời giải từ các bài toán con : Áp dụng công thức truy hồi để điền bảng DP từ nhỏ → lớn
+Tính toán lời giải cuối cùng : Dựa vào bảng → suy ra lời giải và truy vết nghiệm
+c, đặc điểm
+Phân tách vấn đề thành các bài toán con nhỏ hơn
+Lưu trữ kết quả của các bài toán con
+Tránh trùng lặp tính toán
+Thực hiện tính toán theo chiều dọc hoặc chiều ngang : Tiếp cận dọc (Top-down) , Tiếp cận ngang (Bottom-up)
+Tăng hiệu suất tính toán
+Áp dụng cho các bài toán tối ưu hoá có cấu trúc con tối ưu
+Có thể sử dụng các kỹ thuật khác nhau
+d, các điều kiện để chiến lược quy hoạch động trở nên hiệu quả
+Optimal Substructure:
+Lời giải tối ưu của bài toán có thể được xây dựng từ lời giải tối ưu của các
+bài toán con nhỏ hơn.
+• Overlapping Subproblems:
+Cùng một bài toán con xuất hiện nhiều lần trong quá trình giải bài toán lớn.
+e, các bước áp dụng
+vd: ta sử dụng suy nhất 1 ví dụ cho bài này
+Bước 1:Xác định bài toán con
+Bước 2: Xác định điều kiện cơ sở và khởi tạo giá trị biên
+Bước 3: Xác định công thức truy hồi
+Bước 4: Lưu trữ và truy xuất kết quả
+Bước 5: Kết hợp kết quả để tìm lời giải cuối cùng

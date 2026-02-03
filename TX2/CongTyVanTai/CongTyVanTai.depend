@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1770047559 source:d:\code\udtt\tx2\congtyvantai\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
