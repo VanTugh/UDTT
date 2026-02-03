@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1770128032 source:d:\code\udtt\tx2\quyhoachdong\daycontangdainhat\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

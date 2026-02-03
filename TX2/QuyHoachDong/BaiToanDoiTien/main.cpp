@@ -1,37 +1,56 @@
 #include <iostream>
-#include <vector>
 #include <climits>
 using namespace std;
 
 int main()
 {
-    // Các mệnh giá tiền
-    vector<int> coin = {25, 10, 5, 1};
+    int n = 4;                 // số loại tiền
+    int c[5] = {0, 25, 10, 5, 1}; // mệnh giá (bỏ c[0] cho dễ theo chỉ số)
 
-    int n;
-    cout << "Nhap so tien: ";
-    cin >> n;
+    int m;
+    cout << "Nhap so tien can doi: ";
+    cin >> m;
 
-    // dp[i] = số đồng tiền ít nhất để đổi i
-    vector<int> dp(n + 1, INT_MAX);
+    int f[1000];   // f[i]: số tờ tiền ít nhất để đổi i
+    int s[1000];   // s[i]: loại tiền dùng cuối cùng để tạo ra i
 
-    // Điều kiện cơ sở
-    dp[0] = 0;
+    // Khởi tạo
+    f[0] = 0;
+    s[0] = 0;
+
+    for (int i = 1; i <= m; i++)
+    {
+        f[i] = INT_MAX;
+        s[i] = 0;
+    }
 
     // Quy hoạch động
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= m; i++)
     {
-        for (int j = 0; j < coin.size(); j++)
+        for (int j = 1; j <= n; j++)
         {
-            if (coin[j] <= i && dp[i - coin[j]] != INT_MAX)
+            if (c[j] <= i && f[i - c[j]] != INT_MAX)
             {
-                dp[i] = min(dp[i], dp[i - coin[j]] + 1);
+                if (f[i - c[j]] + 1 < f[i])
+                {
+                    f[i] = f[i - c[j]] + 1;
+                    s[i] = j;
+                }
             }
         }
     }
 
-    // Kết quả
-    cout << "So dong tien it nhat: " << dp[n] << endl;
+    // In kết quả
+    cout << "\nSo to tien it nhat: " << f[m] << endl;
+    cout << "Cac menh gia duoc su dung: ";
+
+    int i = m;
+    while (i > 0)
+    {
+        int j = s[i];
+        cout << c[j] << " ";
+        i = i - c[j];
+    }
 
     return 0;
 }
